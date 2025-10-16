@@ -158,7 +158,7 @@ void display7SEG (int num) {
 	}
 }
 
-void updateClockBuffer(){
+void updateClockBuffer(int hour, int minute){
     led_buffer[0] = hour / 10;
     led_buffer[1] = hour % 10;
     led_buffer[2] = minute / 10;
@@ -224,7 +224,7 @@ int main(void)
   MX_GPIO_Init();
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
-  updateClockBuffer();
+  updateClockBuffer(hour, minute);
   HAL_TIM_Base_Start_IT(&htim2);
   /* USER CODE END 2 */
 
@@ -242,9 +242,9 @@ int main(void)
 		ms_counter=0;
 		second++;
 		if (second >= 60) { second = 0; minute++; }
-		else if (minute >= 60) { minute = 0; hour++; }
-		else if (hour >= 24)   { hour = 0; }
-		updateClockBuffer();
+		if (minute >= 60) { minute = 0; hour++; }
+		if (hour >= 24)   { hour = 0; }
+		updateClockBuffer(hour, minute);
 	  }
     /* USER CODE END WHILE */
 
