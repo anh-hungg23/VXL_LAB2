@@ -382,7 +382,7 @@ static void MX_GPIO_Init(void)
 			setTimer2(25);
 			timer2_flag = 0;
 			update7SEG(led_idx++);
-			if(led_idx >>= MAX_LED) led_idx = 0;
+			if(led_idx >= MAX_LED) led_idx = 0;
 		}
  }
 /* USER CODE END 4 */
