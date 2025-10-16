@@ -385,13 +385,14 @@ static void MX_GPIO_Init(void)
 {
 		//TODO
 		if (htim->Instance == TIM2) {
-		// Quét LED
+			ms_counter+=10;
+			if(ms_counter>=250) {
+				ms_counter = 0;
 				update7SEG(led_idx++);
 				if (led_idx >= MAX_LED) led_idx = 0;
+			}
 
-		// Mỗi lần timer ngắt 10ms
 			blink_counter += 10;
-
 			if (blink_counter >= 1000) { // đủ 1 giây
 				blink_counter = 0;
 				HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
