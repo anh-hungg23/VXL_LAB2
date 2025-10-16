@@ -56,6 +56,7 @@ static void MX_TIM2_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+int blink_counter=0;
 const int MAX_LED =4 ;
 int led_idx = 0;
 int hour = 15, minute = 8, second = 50;
@@ -383,9 +384,20 @@ static void MX_GPIO_Init(void)
 	void HAL_TIM_PeriodElapsedCallback ( TIM_HandleTypeDef * htim )
 {
 		//TODO
-		 update7SEG(led_idx);
-		 led_idx++;
-		 if (led_idx >= MAX_LED) led_idx = 0;
+	    if (htim->Instance == TIM2) {
+		// Quét LED
+		update7SEG(led_idx++);
+		if (led_idx >= MAX_LED) led_idx = 0;
+
+		// Mỗi lần timer ngắt 10ms
+		blink_counter += 10;
+
+		if (blink_counter >= 1000) { // đủ 1 giây
+			blink_counter = 0;
+			HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
+			HAL_GPIO_TogglePin(RED_LED_GPIO_Port, RED_LED_Pin);
+		}
+	    }
 
  }
 /* USER CODE END 4 */
