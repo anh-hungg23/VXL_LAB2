@@ -233,19 +233,19 @@ int main(void)
   setTimer1(10);
   while (1)
   {
-	  update7SEG(led_idx++);
-	  if (led_idx >= MAX_LED) led_idx = 0;
-	  HAL_GPIO_TogglePin(GPIOA, DOT_Pin | RED_LED_Pin);
-	  HAL_Delay (1000) ;
-	  ms_counter+=1000;
-	  if(ms_counter == 1000) {
-		ms_counter=0;
-		second++;
-		if (second >= 60) { second = 0; minute++; }
-		else if (minute >= 60) { minute = 0; hour++; }
-		else if (hour >= 24)   { hour = 0; }
-		updateClockBuffer(hour, minute);
+	  if(timer1_flag == 1) {
+		  setTimer1(100);
+		  timer1_flag = 0;
+		  HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
+		  update7SEG(led_idx++);
+		  if(led_idx >= MAX_LED) led_idx =0;
+		  second++;
+		  if (second >= 60) { second = 0; minute++; }
+		  if (minute >= 60) { minute = 0; hour++; }
+		  if (hour >= 24)   { hour = 0; }
+		  updateClockBuffer(hour, minute);
 	  }
+	  __WFI();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
