@@ -237,8 +237,7 @@ int main(void)
 		  setTimer1(100);
 		  timer1_flag = 0;
 		  HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
-		  update7SEG(led_idx++);
-		  if(led_idx >= MAX_LED) led_idx =0;
+
 		  second++;
 		  if (second >= 60) { second = 0; minute++; }
 		  if (minute >= 60) { minute = 0; hour++; }
@@ -378,6 +377,11 @@ static void MX_GPIO_Init(void)
 	void HAL_TIM_PeriodElapsedCallback ( TIM_HandleTypeDef * htim )
 {
 		timerRun();
+		ms_counter+=10;
+		if(ms_counter >= 250) {
+			update7SEG(led_idx++);
+			if(led_idx >= MAX_LED) led_idx = 0;
+		}
  }
 /* USER CODE END 4 */
 
