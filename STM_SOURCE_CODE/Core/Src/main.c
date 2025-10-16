@@ -245,6 +245,13 @@ int main(void)
 		  if (hour >= 24)   { hour = 0; }
 		  updateClockBuffer(hour, minute);
 	  }
+
+	  if(timer2_flag == 1) {
+		  setTimer2(25);
+		  timer2_flag = 0;
+		  update7SEG(led_idx++);
+		  if(led_idx >= MAX_LED) led_idx = 0;
+	  }
 	  __WFI();
     /* USER CODE END WHILE */
 
@@ -378,12 +385,7 @@ static void MX_GPIO_Init(void)
 	void HAL_TIM_PeriodElapsedCallback ( TIM_HandleTypeDef * htim )
 {
 		timerRun();
-		if(timer2_flag == 1) {
-			setTimer2(25);
-			timer2_flag = 0;
-			update7SEG(led_idx++);
-			if(led_idx >= MAX_LED) led_idx = 0;
-		}
+
  }
 /* USER CODE END 4 */
 

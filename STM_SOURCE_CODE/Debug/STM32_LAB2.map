@@ -2215,19 +2215,19 @@ LOAD d:/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externa
  .text.update7SEG
                 0x00000000080004e4       0xa0 ./Core/Src/main.o
                 0x00000000080004e4                update7SEG
- .text.main     0x0000000008000584       0xc8 ./Core/Src/main.o
+ .text.main     0x0000000008000584      0x104 ./Core/Src/main.o
                 0x0000000008000584                main
  .text.SystemClock_Config
-                0x000000000800064c       0x76 ./Core/Src/main.o
-                0x000000000800064c                SystemClock_Config
- *fill*         0x00000000080006c2        0x2 
+                0x0000000008000688       0x76 ./Core/Src/main.o
+                0x0000000008000688                SystemClock_Config
+ *fill*         0x00000000080006fe        0x2 
  .text.MX_TIM2_Init
-                0x00000000080006c4       0x98 ./Core/Src/main.o
+                0x0000000008000700       0x98 ./Core/Src/main.o
  .text.MX_GPIO_Init
-                0x000000000800075c       0xa8 ./Core/Src/main.o
+                0x0000000008000798       0xa8 ./Core/Src/main.o
  .text.HAL_TIM_PeriodElapsedCallback
-                0x0000000008000804       0x50 ./Core/Src/main.o
-                0x0000000008000804                HAL_TIM_PeriodElapsedCallback
+                0x0000000008000840       0x14 ./Core/Src/main.o
+                0x0000000008000840                HAL_TIM_PeriodElapsedCallback
  .text.Error_Handler
                 0x0000000008000854        0xa ./Core/Src/main.o
                 0x0000000008000854                Error_Handler
