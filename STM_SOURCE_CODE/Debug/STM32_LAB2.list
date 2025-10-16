@@ -963,8 +963,8 @@ int led_idx = 0;
  80006fe:	681b      	ldr	r3, [r3, #0]
  8000700:	2b01      	cmp	r3, #1
  8000702:	d112      	bne.n	800072a <HAL_TIM_PeriodElapsedCallback+0x3a>
-		  setTimer1(50);
- 8000704:	2032      	movs	r0, #50	; 0x32
+		  setTimer1(25);
+ 8000704:	2019      	movs	r0, #25
  8000706:	f000 f8b9 	bl	800087c <setTimer1>
 		  update7SEG(led_idx++);
  800070a:	4b12      	ldr	r3, [pc, #72]	; (8000754 <HAL_TIM_PeriodElapsedCallback+0x64>)

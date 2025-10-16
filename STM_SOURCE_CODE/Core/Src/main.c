@@ -359,7 +359,7 @@ int led_idx = 0;
 
 		// TODO
 		if (timer1_flag == 1) {
-		  setTimer1(50);
+		  setTimer1(25);
 		  update7SEG(led_idx++);
 		  if (led_idx >= MAX_LED) led_idx = 0;
 		  }
