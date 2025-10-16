@@ -1,0 +1,2 @@
+sw_timer.c:14:6:setTimer1	16	static
+sw_timer.c:19:6:timerRun	4	static
